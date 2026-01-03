@@ -1,21 +1,28 @@
-let teams = [];
+let teams = JSON.parse(localStorage.getItem("teams")) || [];
+
+updateLeaderboard();
+
+function saveTeams() {
+  localStorage.setItem("teams", JSON.stringify(teams));
+}
 
 function addTeam() {
   const name = document.getElementById("teamName").value.trim();
 
-  if (name === "") {
+  if (!name) {
     alert("Enter a team name");
     return;
   }
 
-  const exists = teams.find(team => team.name === name);
-  if (exists) {
+  if (teams.some(t => t.name === name)) {
     alert("Team already exists");
     return;
   }
 
-  teams.push({ name: name, score: 0 });
+  teams.push({ name, score: 0 });
   document.getElementById("teamName").value = "";
+
+  saveTeams();
   updateLeaderboard();
 }
 
@@ -23,7 +30,7 @@ function addScore() {
   const name = document.getElementById("scoreTeam").value.trim();
   const score = Number(document.getElementById("scoreValue").value);
 
-  const team = teams.find(team => team.name === name);
+  const team = teams.find(t => t.name === name);
 
   if (!team) {
     alert("Team not found");
@@ -31,7 +38,8 @@ function addScore() {
   }
 
   team.score += score;
-  document.getElementById("scoreValue").value = "";
+
+  saveTeams();
   updateLeaderboard();
 }
 
