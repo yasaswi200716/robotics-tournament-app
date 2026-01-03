@@ -1,11 +1,4 @@
-// Load teams from localStorage or start empty
-let teams = JSON.parse(localStorage.getItem("teams")) || [];
-
-updateLeaderboard();
-
-function saveTeams() {
-  localStorage.setItem("teams", JSON.stringify(teams));
-}
+let teams = [];
 
 function addTeam() {
   const name = document.getElementById("teamName").value.trim();
@@ -23,8 +16,6 @@ function addTeam() {
 
   teams.push({ name: name, score: 0 });
   document.getElementById("teamName").value = "";
-
-  saveTeams();
   updateLeaderboard();
 }
 
@@ -41,8 +32,6 @@ function addScore() {
 
   team.score += score;
   document.getElementById("scoreValue").value = "";
-
-  saveTeams();
   updateLeaderboard();
 }
 
@@ -54,7 +43,7 @@ function updateLeaderboard() {
     .sort((a, b) => b.score - a.score)
     .forEach(team => {
       const li = document.createElement("li");
-      li.textContent = `${team.name} - ${team.score} pts`;
+      li.innerHTML = `<span>${team.name}</span><span>${team.score} pts</span>`;
       leaderboard.appendChild(li);
     });
 }
