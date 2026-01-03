@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Robotics Tournament Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1> Robotics Tournament Manager</h1>
+  <p>Treating robotics competitions like a sport</p>
+
+  <div class="container">
+    <h2>Add Team</h2>
+    <input type="text" id="teamName" placeholder="Team name" />
+    <button onclick="addTeam()">Add Team</button>
+
+    <h2>Add / Update Score</h2>
+    <input type="text" id="scoreTeam" placeholder="Team name" />
+    <input type="number" id="scoreValue" placeholder="Score" />
+    <button onclick="addScore()">Update Score</button>
+
+    <h2>Leaderboard</h2>
+    <ul id="leaderboard"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

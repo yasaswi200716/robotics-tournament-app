@@ -1,0 +1,38 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  text-align: center;
+}
+
+.container {
+  background: white;
+  width: 90%;
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+input {
+  padding: 8px;
+  margin: 5px;
+  width: 80%;
+}
+
+button {
+  padding: 8px 15px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #e3e7ed;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+}
